@@ -65,7 +65,7 @@
 			<artifactId>surefire-report-parser</artifactId>
 			<version>2.19</version>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.apache.maven.plugin-tools</groupId>
 			<artifactId>maven-plugin-annotations</artifactId>
 			<version>3.2</version>

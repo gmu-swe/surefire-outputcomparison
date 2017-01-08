@@ -2,19 +2,11 @@ package net.jonbell.surefire.provider;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
 import java.util.Scanner;
 
-import org.apache.maven.artifact.repository.ArtifactRepository;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -24,8 +16,6 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.surefire.report.ReportTestCase;
 import org.apache.maven.plugins.surefire.report.ReportTestSuite;
-import org.apache.maven.plugins.surefire.report.SurefireReportParser;
-import org.apache.maven.reporting.MavenReportException;
 
 @Mojo(name = "analyze", defaultPhase = LifecyclePhase.PRE_INTEGRATION_TEST)
 public class OutputComparingMojo extends AbstractMojo {
@@ -117,14 +107,14 @@ public class OutputComparingMojo extends AbstractMojo {
 					}
 				}
 			}
-			if(errored)
+			if (errored)
 				totalErrors++;
 			consoleLogger.info("Total: Tests run: " + thisNTests + ", Failures: 0, Errors: " + (errored ? 1 : 0) + ", Skipped: 0");
 			consoleLogger.info("-------------------------------------------");
 		}
 		consoleLogger.info("");
 		consoleLogger.info("Results: Tests run: " + totalTests + ", Failures: " + totalFailures + ", Errors: " + totalErrors + ", Skipped: " + totalSkipped);
-		if(totalErrors > 0)
+		if (totalErrors > 0)
 			throw new MojoFailureException("Tests failed.");
 	}
 }
